@@ -1,6 +1,5 @@
 import sys
 import struct
-import Image, ImageDraw
 
 def decompress(fi):
     f = open(fi, 'rb')
@@ -56,9 +55,6 @@ def convert(data):
     data = data[36:]
     offset = 0
 
-    im = Image.new('RGB', (width, height))
-    draw = ImageDraw.Draw(im)
-
     f = open ('data', 'w')
 
     for h in range(height):
@@ -81,13 +77,10 @@ def convert(data):
             tile = struct.unpack('h', data[offset:offset+2])[0]
             offset += 2
             inner.append(tile)
-            if tile:
-                draw.point((w, h), fill=(255,tile,0))
         f.write(str(inner) + '\n')
         sprites.append(inner)
 
     f.close()
-    im.save('keen.png')
     return tiles, sprites
 
 if __name__ == '__main__':
