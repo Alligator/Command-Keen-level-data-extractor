@@ -11,7 +11,9 @@ This returns two files, one named `data` and one named `sprites` containg the ti
 
 ## Module
 The script can also be used as a module, like so:
- ha   import keen
+
+    import keen
+
 The module has two methods.
 
     decompress(file)
