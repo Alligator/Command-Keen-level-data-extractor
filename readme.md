@@ -21,7 +21,7 @@ The module has two methods.
 Expects a filename as a string.
 Returns a string representing the entire decompressed file.
 
-   convert(data) 
+    convert(data) 
 
 Excepts data to be a string.
 Returns a tuple containg the lists of tiles a sprites.
