@@ -14,7 +14,7 @@ def decompress(fi):
         word = f.read(2)
         pos += 2
         # Is this word $FEFE?
-        if word == '\xFE\xFE':
+        if word == b'\xFE\xFE':
             # If yes;
             # Get the next two words (Word1 and Word2)
             w1 = struct.unpack('h', f.read(2))[0]
@@ -47,8 +47,8 @@ def convert(data):
     height  = struct.unpack('h', data[6:8])[0]
     psize  = struct.unpack('h', data[18:20])[0]
 
-    print
-    print psize
+    print()
+    print(psize)
 
     # get them tiles
     tiles = []
@@ -63,7 +63,6 @@ def convert(data):
             tile = struct.unpack('h', data[offset:offset+2])[0]
             offset += 2
             inner.append(tile)
-            draw.point((w, h), fill=(tile,tile,tile))
         f.write(str(inner) + '\n')
         tiles.append(inner)
     f.close()
